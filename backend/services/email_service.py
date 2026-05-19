@@ -11,7 +11,7 @@ from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
 from pathlib import Path
 from typing import Optional, List
 import logging
-from config import settings
+from .config import settings
 
 logger = logging.getLogger(__name__)
 

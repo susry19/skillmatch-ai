@@ -4,7 +4,7 @@ from typing import Optional
 
 class Settings(BaseSettings):
     # Database
-    DATABASE_URL: str = "postgresql://skillmatch:password@localhost:5432/skillmatch"
+    DATABASE_URL: str = "sqlite:///./skillmatch.db"
 
     # Auth
     SECRET_KEY: str = "change-this-secret"

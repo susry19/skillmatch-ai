@@ -5,7 +5,7 @@ import logging
 from typing import List, Dict, Any
 try:
     from sentence_transformers import SentenceTransformer
-except ImportError:
+except Exception:
     SentenceTransformer = None
 
 # Configure logging

@@ -5,8 +5,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from sqlalchemy.orm import Session
 import os
-from database import engine, Base, get_db
-import models
+from .database import engine, Base, get_db
+from . import models
 
 Base.metadata.create_all(bind=engine)
 
@@ -26,7 +26,7 @@ templates.env.variable_start_string = '(('
 templates.env.variable_end_string = '))'
 
 # Routers
-from routers import candidates, positions, analytics, applications, interviews, offers, onboarding, auth
+from .routers import candidates, positions, analytics, applications, interviews, offers, onboarding, auth
 app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(candidates.router, prefix="/api/candidates", tags=["candidates"])
 app.include_router(positions.router, prefix="/api/positions", tags=["positions"])
@@ -36,7 +36,7 @@ app.include_router(interviews.router, prefix="/api/interviews", tags=["interview
 app.include_router(offers.router, prefix="/api/offers", tags=["offers"])
 app.include_router(onboarding.router, prefix="/api/onboarding", tags=["onboarding"])
 
-from services.chatbot import chatbot_service
+from .services.chatbot import chatbot_service
 @app.post("/api/chat")
 def chat_endpoint(message: str = Body(..., embed=True), db: Session = Depends(get_db)):
     return {"response": chatbot_service.chat(message, db)}
