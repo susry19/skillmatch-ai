@@ -138,7 +138,7 @@ createApp({
       const opts = { method, headers };
       if (body) opts.body = JSON.stringify(body);
       const r = await fetch(url, opts);
-      if (r.status === 401) { logout(); throw new Error('Oturum süresi doldu'); }
+      if (r.status === 401 && !url.includes('/api/auth/login')) { logout(); throw new Error('Oturum süresi doldu'); }
       if (!r.ok) {
         const err = await r.json().catch(() => ({}));
         throw new Error(err.detail || `HTTP ${r.status}`);
