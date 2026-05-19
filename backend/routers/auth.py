@@ -13,9 +13,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 
-import models, schemas
-fromdatabase import get_db
-fromauth import (
+from .. import models, schemas
+from ..database import get_db
+from ..auth import (
     get_password_hash, verify_password, create_access_token,
     get_current_user, require_roles
 )
@@ -158,7 +158,7 @@ def generate_candidate_token(
     user.candidate_access_token = token
     db.commit()
 
-    fromconfig import settings
+    from ..config import settings
     portal_url = f"{settings.APP_URL}/portal?token={token}"
     return {"token": token, "portal_url": portal_url}
 
