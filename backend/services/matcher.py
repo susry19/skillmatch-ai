@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from .. import models
 import json
-from .semantic_matcher import semantic_matcher
+from semantic_matcher import semantic_matcher
 
 class MatcherService:
     def match_candidates(self, position_id: int, db: Session):

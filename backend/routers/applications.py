@@ -100,7 +100,7 @@ def update_status(app_id: int, data: schemas.ApplicationStatusUpdate, db: Sessio
     db.commit()
     
     # Log the transition
-    from .candidates import _log
+    from candidates import _log
     _log(db, "status_changed", "application", a.id, {"from": old_status, "to": a.status, "candidate_id": a.candidate_id})
     
     return {"status": a.status}
