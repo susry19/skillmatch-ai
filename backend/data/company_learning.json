@@ -1,0 +1,15 @@
+{
+    "positive_signals": {
+        "skill": {
+            "Python": 1,
+            "python": 2
+        },
+        "seniority": {},
+        "position": {}
+    },
+    "negative_signals": {
+        "skill": {},
+        "seniority": {},
+        "position": {}
+    }
+}
