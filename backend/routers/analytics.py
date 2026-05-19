@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import func
-from .. import models, schemas, database
+import models, schemas, database
 from typing import List
 from datetime import datetime, timedelta
 import random

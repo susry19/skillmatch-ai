@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session, joinedload
 from typing import List
 from datetime import datetime, timezone
 import json, os
-from .. import models, database
+import models, database
 
 router = APIRouter()
 

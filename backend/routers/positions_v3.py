@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, Body
 from sqlalchemy.orm import Session
 from typing import List
-from .. import models, schemas, database
+import models, schemas, database
 
 router = APIRouter()
 
@@ -27,14 +27,14 @@ def read_position(position_id: int, db: Session = Depends(database.get_db)):
 
 @router.get("/{position_id}/matches", response_model=List[schemas.CandidateMatch])
 def match_candidates(position_id: int, db: Session = Depends(database.get_db)):
-    from ..services.matcher import matcher_service
+    fromservices.matcher import matcher_service
     matches = matcher_service.match_candidates(position_id, db)
     return matches
 
 @router.post("/feedback")
 def receive_feedback(feedback: schemas.FeedbackCreate, db: Session = Depends(database.get_db)):
     """Receives feedback signals for the learning engine."""
-    from ..services.semantic_matcher import semantic_matcher
+    fromservices.semantic_matcher import semantic_matcher
     
     # Verify existence (optional but accurate)
     candidate = db.query(models.Candidate).filter(models.Candidate.id == feedback.candidate_id).first()
@@ -61,7 +61,7 @@ def receive_feedback(feedback: schemas.FeedbackCreate, db: Session = Depends(dat
 
 @router.get("/salary-suggestion")
 def get_salary_suggestion(title: str, location: str = "Türkiye"):
-    from ..services.salary_service import salary_service
+    fromservices.salary_service import salary_service
     return salary_service.get_market_salary(title, location)
 
 @router.post("/analyze")
@@ -74,7 +74,7 @@ def analyze_position(payload: dict = Body(...)):
         return {"error": "Title is required"}
         
     # 1. Generate Content (Description, Skills, AND Salary)
-    from ..services.ai_job_generator import ai_job_generator
+    fromservices.ai_job_generator import ai_job_generator
     specs = ai_job_generator.generate_job_specs(title)
         
     return {

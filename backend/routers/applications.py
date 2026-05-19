@@ -3,8 +3,8 @@ from sqlalchemy.orm import Session, joinedload
 from typing import List, Optional
 from datetime import datetime, timezone
 import json
-from .. import models, schemas, database
-from ..services.matcher import matcher_service
+import models, schemas, database
+fromservices.matcher import matcher_service
 
 router = APIRouter()
 

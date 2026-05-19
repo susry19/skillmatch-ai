@@ -13,9 +13,9 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session, joinedload
 from typing import List
 
-from .. import models, schemas
-from ..database import get_db
-from ..auth import get_candidate_from_token, get_current_user
+import models, schemas
+fromdatabase import get_db
+fromauth import get_candidate_from_token, get_current_user
 
 router = APIRouter()
 

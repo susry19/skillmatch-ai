@@ -2,8 +2,8 @@ from fastapi import APIRouter, UploadFile, File, Depends, HTTPException, Body
 from sqlalchemy.orm import Session
 from typing import List
 import json
-from .. import models, schemas, database
-from ..services import pdf_parser, ai_analyzer
+import models, schemas, database
+fromservices import pdf_parser, ai_analyzer
 
 router = APIRouter()
 
